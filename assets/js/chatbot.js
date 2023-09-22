@@ -1,99 +1,60 @@
-$(function() {
-  var INDEX = 0; 
-  $("#chat-submit").click(function(e) {
-    e.preventDefault();
-    var msg = $("#chat-input").val(); 
-    if(msg.trim() == ''){
-      return false;
-    }
-    generate_message(msg, 'self');
-    var buttons = [
-        {
-          name: 'Existing User',
-          value: 'existing'
-        },
-        {
-          name: 'New User',
-          value: 'new'
-        }
-      ];
-    setTimeout(function() {      
-      generate_message(msg, 'user');  
-    }, 1000)
+let chatbotOpen = false;
+
+// Define FAQs and their answers
+const faqs = [
+    {
+        question: "What is your company?",
+        answer: "We are a tech company that specializes in AI and chatbot development."
+    },
+    {
+        question: "How can I contact support?",
+        answer: "You can contact our support team at support@example.com."
+    },
+    {
+        question: "Do you offer refunds?",
+        answer: "Yes, we offer refunds within 30 days of purchase. Please contact our support for assistance."
+    },
+    // Add more FAQs and answers here
+];
+
+function toggleChat() {
+    const chatBody = document.getElementById('chat-body');
+    const chatIcon = document.getElementById('chat-icon');
     
-  })
-  
-  function generate_message(msg, type) {
-    INDEX++;
-    var str="";
-    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
-    str += "          <span class=\"msg-avatar\">";
-    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
-    str += "          <\/span>";
-    str += "          <div class=\"cm-msg-text\">";
-    str += msg;
-    str += "          <\/div>";
-    str += "        <\/div>";
-    $(".chat-logs").append(str);
-    $("#cm-msg-"+INDEX).hide().fadeIn(300);
-    if(type == 'self'){
-     $("#chat-input").val(''); 
-    }    
-    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);    
-  }  
-  
-  function generate_button_message(msg, buttons){    
-    /* Buttons should be object array 
-      [
-        {
-          name: 'Existing User',
-          value: 'existing'
-        },
-        {
-          name: 'New User',
-          value: 'new'
-        }
-      ]
-    */
-    INDEX++;
-    var btn_obj = buttons.map(function(button) {
-       return  "              <li class=\"button\"><a href=\"javascript:;\" class=\"btn btn-primary chat-btn\" chat-value=\""+button.value+"\">"+button.name+"<\/a><\/li>";
-    }).join('');
-    var str="";
-    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg user\">";
-    str += "          <span class=\"msg-avatar\">";
-    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
-    str += "          <\/span>";
-    str += "          <div class=\"cm-msg-text\">";
-    str += msg;
-    str += "          <\/div>";
-    str += "          <div class=\"cm-msg-button\">";
-    str += "            <ul>";   
-    str += btn_obj;
-    str += "            <\/ul>";
-    str += "          <\/div>";
-    str += "        <\/div>";
-    $(".chat-logs").append(str);
-    $("#cm-msg-"+INDEX).hide().fadeIn(300);   
-    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
-    $("#chat-input").attr("disabled", true);
-  }
-  
-  $(document).delegate(".chat-btn", "click", function() {
-    var value = $(this).attr("chat-value");
-    var name = $(this).html();
-    $("#chat-input").attr("disabled", false);
-    generate_message(name, 'self');
-  })
-  
-  $("#chat-circle").click(function() {    
-    $("#chat-circle").toggle('scale');
-    $(".chat-box").toggle('scale');
-  })
-  
-  $(".chat-box-toggle").click(function() {
-    $("#chat-circle").toggle('scale');
-    $(".chat-box").toggle('scale');
-  })
-  
-})
+    chatbotOpen = !chatbotOpen;
+    if (chatbotOpen) {
+        chatBody.style.display = 'block';
+        chatIcon.innerHTML = '-';
+    } else {
+        chatBody.style.display = 'none';
+        chatIcon.innerHTML = '+';
+    }
+}
+
+function askQuestion() {
+    const userMessage = document.getElementById('user-message').value;
+    const chatContent = document.getElementById('chat-content');
+    
+    // Check if the user's question matches any FAQ
+    const matchedFAQ = faqs.find(faq => userMessage.toLowerCase().includes(faq.question.toLowerCase()));
+    
+    if (matchedFAQ) {
+        // If a matching FAQ is found, display the answer
+        const botResponse = "Chatbot: " + matchedFAQ.answer;
+        chatContent.innerHTML += '<p>User: ' + userMessage + '</p>';
+        chatContent.innerHTML += '<p>' + botResponse + '</p>';
+    } else {
+        // If no matching FAQ is found, provide a generic response
+        const botResponse = "Chatbot: I'm sorry, I don't have the answer to that question.";
+        chatContent.innerHTML += '<p>User: ' + userMessage + '</p>';
+        chatContent.innerHTML += '<p>' + botResponse + '</p>';
+    }
+    
+    // Clear user's input
+    document.getElementById('user-message').value = '';
+    
+    // Scroll to the bottom of the chat content
+    chatContent.scrollTop = chatContent.scrollHeight;
+}
+
+// You can further enhance this script by adding more FAQs and answers as needed.
