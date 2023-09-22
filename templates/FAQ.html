@@ -54,24 +54,20 @@
 
     <!--====== TEACHERS PART START ======-->
 
-    <section id="teachers-page" class="pt-60 pb-120 gray-bg">
-
-    <!-- Chatbox -->
-    <div class="chatbox" id="chatbox">
-        <div class="header">
-            <h2>FAQ Chatbot</h2>
-            <button id="minimize-btn" onclick="toggleChatbox()">-</button>
+       <div id="chatbot">
+        <div id="chat-header">
+            <div id="chat-icon" onclick="toggleChat()">+</div>
         </div>
-        <div class="messages">
-            <!-- Chat messages will be displayed here -->
-        </div>
-        <div class="input-box">
-            <input type="text" id="user-input" placeholder="Ask a question...">
-            <button onclick="sendMessage()">Send</button>
+        <div id="chat-body">
+            <div id="chat-content">
+                <!-- Chatbot content will be loaded here -->
+            </div>
+            <div id="user-input">
+                <input type="text" id="user-message" placeholder="Type your question...">
+                <button onclick="askQuestion()">Ask</button>
+            </div>
         </div>
     </div>
-    </section>
-
     <!--====== TEACHERS PART ENDS ======-->
 
     <!--====== FOOTER PART START ======-->
