@@ -3,12 +3,12 @@ let chatbotOpen = false;
 // Define FAQs and their answers
 const faqs = [
     {
-        question: "What is your company?",
-        answer: "We are a tech company that specializes in AI and chatbot development."
+        question: "What programmes does the Faculty of Computer Science offer for enrollment?",
+        answer: "The Faculty of Computer Science offers a variety of programmes, including diploma and degree programmes. You can explore our programme offerings on our official website."
     },
     {
-        question: "How can I contact support?",
-        answer: "You can contact our support team at support@example.com."
+        question: "How can I enroll in a diploma programme in Computer Science at your faculty?",
+        answer: "To enroll in a diploma programme, go to our website's diploma page and select your favourite programme from the list. After that, you can fill out the form by clicking the enroll button."
     },
     {
         question: "Do you offer refunds?",
