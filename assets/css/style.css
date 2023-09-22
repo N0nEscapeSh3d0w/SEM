@@ -3785,43 +3785,6 @@ p.form-message.error {
 	padding-bottom: 15px;
 }
 
-/* Chatbot icon styles */
-.chat-icon {
-    position: fixed;
-    bottom: 20px; /* Adjust this value as needed */
-    right: 20px;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-}
-
-/* Display the chat icon when chatbox is minimized */
-.minimized .chat-icon {
-    display: block;
-}
-
-/* Chatbox styles */
-.chatbox {
-    width: 300px;
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
-    position: fixed;
-    bottom: 100px; /* Adjust this value as needed */
-    right: 20px;
-    border-radius: 10px 10px 0 0;
-    display: none;
-}
-
-/* Display the chatbox when not minimized */
-.minimized .chatbox {
-    display: block;
-}
-
-/* Rest of your CSS styles for the chatbox */
-
 
 
 
