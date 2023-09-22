@@ -1,6 +1,21 @@
 let chatbotOpen = false;
 
-let faqs = []; // Array to store FAQs
+// Define FAQs and their answers
+const faqs = [
+    {
+        question: "What is your company?",
+        answer: "We are a tech company that specializes in AI and chatbot development."
+    },
+    {
+        question: "How can I contact support?",
+        answer: "You can contact our support team at support@example.com."
+    },
+    {
+        question: "Do you offer refunds?",
+        answer: "Yes, we offer refunds within 30 days of purchase. Please contact our support for assistance."
+    },
+    // Add more FAQs and answers here
+];
 
 function toggleChat() {
     const chatBody = document.getElementById('chat-body');
@@ -65,16 +80,15 @@ function askQuestion() {
     chatContent.scrollTop = chatContent.scrollHeight;
 }
 
-function fetchFaqs() {
-    return fetch('/static/js/faqs.json') // Adjust the path as needed
-        .then(response => response.json())
-        .then(data => {
-            faqs = data; // Store FAQs in the 'faqs' array
-        })
-        .catch(error => {
-            console.error('Error fetching FAQs:', error);
-        });
-}
+// Initial greeting message from the chatbot
+const initialGreeting = "Hello! How can I assist you today?";
 
-// Call the fetchFaqs function to load the FAQs when the page loads
-fetchFaqs();
+// Display the initial greeting when the page loads
+const chatContent = document.getElementById('chat-content');
+chatContent.innerHTML += `
+    <div class="chatbot-message">
+        <div class="message-content chatbot">
+            ${initialGreeting}
+        </div>
+    </div>
+`;
