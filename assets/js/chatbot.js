@@ -3,27 +3,27 @@ let chatbotOpen = false;
 // Define FAQs and their answers
 const faqs = [
     {
-        question: "What programmes does the Faculty of Computer Science offer for enrollment?",
+        question: "programme",
         answer: "The Faculty of Computer Science offers a variety of programmes, including diploma and degree programmes. You can explore our programme offerings on our official website."
     },
     {
-        question: "How can I enroll in a diploma programme in Computer Science at your faculty?",
+        question: "enroll",
         answer: "To enroll in a diploma programme, go to our website's diploma page and select your favourite programme from the list. After that, you can fill out the form by clicking the enroll button."
     },
     {
-        question: "Can I transfer credits from another institution to your diploma program in Computer Science?",
+        question: "credit transfer",
         answer: "Yes, we do consider credit transfers from other recognized institutions. Contact our academic advisors for more information and to evaluate your transfer credits."
     },
     {
-        question: "Where can I find the staff directory for the Faculty of Computer Science?",
+        question: "staff",
         answer: "Our staff directory is available on the staff page."
     },
     {
-        question: "What undergraduate degree programs are available at the Faculty of Computer Science?",
+        question: "degree programmes",
         answer: "We offer a range of undergraduate degree programs in Computer Science, including Bachelor of Science (B.Sc.) in Computer Science and related fields. You can find more information on the particular programme page."
     },
     {
-        question: "How can I get in touch with the main reception or information desk of your Faculty of Computer Science?",
+        question: "contact",
         answer: "The contact number and address of the TARUMT campus can be found at the bottom of the website page."
     },
     
