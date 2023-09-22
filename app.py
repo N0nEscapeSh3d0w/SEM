@@ -49,7 +49,7 @@ def enroll():
 def enroll2():
     return render_template('enroll-2.html')
 
-@app.route("/FQA", methods=['GET', 'POST'])
+@app.route("/FAQ", methods=['GET', 'POST'])
 def faq():
     return render_template('FAQ.html')
 
