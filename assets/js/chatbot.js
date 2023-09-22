@@ -65,12 +65,16 @@ function askQuestion() {
     chatContent.scrollTop = chatContent.scrollHeight;
 }
 
-// Fetch FAQs from the JSON file
-fetch('/js/faqs.json')
-    .then(response => response.json())
-    .then(data => {
-        faqs = data; // Store FAQs in the 'faqs' array
-    })
-    .catch(error => {
-        console.error('Error fetching FAQs:', error);
-    });
+function fetchFaqs() {
+    return fetch('/static/js/faqs.json') // Adjust the path as needed
+        .then(response => response.json())
+        .then(data => {
+            faqs = data; // Store FAQs in the 'faqs' array
+        })
+        .catch(error => {
+            console.error('Error fetching FAQs:', error);
+        });
+}
+
+// Call the fetchFaqs function to load the FAQs when the page loads
+fetchFaqs();
