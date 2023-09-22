@@ -24,13 +24,12 @@ function toggleChat() {
     chatbotOpen = !chatbotOpen;
     if (chatbotOpen) {
         chatBody.style.display = 'block';
-        chatIcon.classList.add('open');
+        chatIcon.innerHTML = '-';
     } else {
         chatBody.style.display = 'none';
-        chatIcon.classList.remove('open');
+        chatIcon.innerHTML = '+';
     }
 }
-
 function askQuestion() {
     const userMessage = document.getElementById('user-message').value;
     const chatContent = document.getElementById('chat-content');
@@ -57,4 +56,4 @@ function askQuestion() {
     chatContent.scrollTop = chatContent.scrollHeight;
 }
 
-// You can further enhance this script by adding more chatbot functionality and interactions.
+// You can further enhance this script by adding more FAQs and answers as needed.
