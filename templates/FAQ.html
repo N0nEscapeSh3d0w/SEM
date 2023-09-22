@@ -54,13 +54,18 @@
 
     <!--====== TEACHERS PART START ======-->
 
-    <div id="chatbot">
+ <div id="chatbot">
         <div id="chat-header">
-           <div id="chat-icon" onclick="toggleChat()">🤖</div>
+            <div id="chat-icon" onclick="toggleChat()">🤖</div>
         </div>
         <div id="chat-body">
             <div id="chat-content">
-                <!-- Chatbot content will be loaded here -->
+                <!-- Initial Hello message -->
+                <div class="chatbot-message">
+                    <div class="message-content">
+                        Hello! How can I assist you today?
+                    </div>
+                </div>
             </div>
             <div id="user-input">
                 <input type="text" id="user-message" placeholder="Type your question...">
@@ -68,11 +73,6 @@
             </div>
         </div>
     </div>
-  
-  
-  
-  
-</div>
     <!--====== TEACHERS PART ENDS ======-->
 
     <!--====== FOOTER PART START ======-->
