@@ -1,4 +1,3 @@
-// FAQ data in JSON format
 const faqData = {
     "What is this chatbot?": "This is a simple FAQ chatbot.",
     "How can I use it?": "You can ask questions, and I will provide answers.",
