@@ -49,6 +49,10 @@ def enroll():
 def enroll2():
     return render_template('enroll-2.html')
 
+@app.route("/facility", methods=['GET', 'POST'])
+def facility():
+    return render_template('facility.html')
+
 @app.route("/FAQ", methods=['GET', 'POST'])
 def faq():
     return render_template('FAQ.html')
