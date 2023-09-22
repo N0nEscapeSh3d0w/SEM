@@ -24,10 +24,10 @@ function toggleChat() {
     chatbotOpen = !chatbotOpen;
     if (chatbotOpen) {
         chatBody.style.display = 'block';
-        chatIcon.innerHTML = '-';
+        chatIcon.classList.add('open');
     } else {
         chatBody.style.display = 'none';
-        chatIcon.innerHTML = '+';
+        chatIcon.classList.remove('open');
     }
 }
 
@@ -35,19 +35,42 @@ function askQuestion() {
     const userMessage = document.getElementById('user-message').value;
     const chatContent = document.getElementById('chat-content');
     
+    // User message
+    chatContent.innerHTML += `
+        <div class="user-message">
+            <div class="message-content user">
+                ${userMessage}
+            </div>
+        </div>
+    `;
+    
     // Check if the user's question matches any FAQ
     const matchedFAQ = faqs.find(faq => userMessage.toLowerCase().includes(faq.question.toLowerCase()));
     
     if (matchedFAQ) {
         // If a matching FAQ is found, display the answer
-        const botResponse = "Chatbot: " + matchedFAQ.answer;
-        chatContent.innerHTML += '<p>User: ' + userMessage + '</p>';
-        chatContent.innerHTML += '<p>' + botResponse + '</p>';
+        const botResponse = matchedFAQ.answer;
+        
+        // Chatbot message
+        chatContent.innerHTML += `
+            <div class="chatbot-message">
+                <div class="message-content chatbot">
+                    ${botResponse}
+                </div>
+            </div>
+        `;
     } else {
         // If no matching FAQ is found, provide a generic response
-        const botResponse = "Chatbot: I'm sorry, I don't have the answer to that question.";
-        chatContent.innerHTML += '<p>User: ' + userMessage + '</p>';
-        chatContent.innerHTML += '<p>' + botResponse + '</p>';
+        const botResponse = "I'm sorry, I don't have the answer to that question.";
+        
+        // Chatbot message
+        chatContent.innerHTML += `
+            <div class="chatbot-message">
+                <div class="message-content chatbot">
+                    ${botResponse}
+                </div>
+            </div>
+        `;
     }
     
     // Clear user's input
@@ -57,4 +80,15 @@ function askQuestion() {
     chatContent.scrollTop = chatContent.scrollHeight;
 }
 
-// You can further enhance this script by adding more FAQs and answers as needed.
+// Initial greeting message from the chatbot
+const initialGreeting = "Hello! How can I assist you today?";
+
+// Display the initial greeting when the page loads
+const chatContent = document.getElementById('chat-content');
+chatContent.innerHTML += `
+    <div class="chatbot-message">
+        <div class="message-content chatbot">
+            ${initialGreeting}
+        </div>
+    </div>
+`;
