@@ -1,9 +1,20 @@
-// FAQ data in JSON format
-const faqData = {
-    "What is this chatbot?": "This is a simple FAQ chatbot.",
-    "How can I use it?": "You can ask questions, and I will provide answers.",
-    "Can you give an example?": "Sure! Ask me a question."
-};
+// Define an empty faqData object
+let faqData = {};
+
+// Function to load FAQ data from the JSON file
+function loadFAQData() {
+    fetch('faq.json') // Assuming the JSON file is in the same directory as your HTML
+        .then(response => response.json())
+        .then(data => {
+            faqData = data; // Assign the loaded JSON data to the faqData object
+        })
+        .catch(error => {
+            console.error('Error loading FAQ data:', error);
+        });
+}
+
+// Call the function to load FAQ data when the page loads
+window.addEventListener('DOMContentLoaded', loadFAQData);
 
 // Chatbox element references
 const chatbox = document.querySelector('.chatbox');
