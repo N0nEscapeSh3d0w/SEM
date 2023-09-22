@@ -66,7 +66,7 @@ function askQuestion() {
 }
 
 // Fetch FAQs from the JSON file
-fetch('js/faqs.json')
+fetch('./faqs.json')
     .then(response => response.json())
     .then(data => {
         faqs = data; // Store FAQs in the 'faqs' array
