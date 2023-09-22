@@ -1,49 +1,36 @@
-const faqData = {
-    "What is this chatbot?": "This is a simple FAQ chatbot.",
-    "How can I use it?": "You can ask questions, and I will provide answers.",
-    "Can you give an example?": "Sure! Ask me a question."
-};
+let chatbotOpen = false;
 
-// Chatbox element references
-const chatbox = document.querySelector('.chatbox');
-const messages = document.querySelector('.messages');
-const userInput = document.getElementById('user-input');
-
-// Function to add a user message to the chat
-function addUserMessage(message) {
-    const userMessage = document.createElement('div');
-    userMessage.className = 'user-message';
-    userMessage.textContent = message;
-    messages.appendChild(userMessage);
-}
-
-// Function to add a bot response to the chat
-function addBotResponse(response) {
-    const botResponse = document.createElement('div');
-    botResponse.className = 'bot-response';
-    botResponse.textContent = response;
-    messages.appendChild(botResponse);
-}
-
-// Function to handle user input and generate bot response
-function sendMessage() {
-    const userMessage = userInput.value;
-    if (userMessage.trim() !== '') {
-        addUserMessage(userMessage);
-        if (faqData[userMessage]) {
-            addBotResponse(faqData[userMessage]);
-        } else {
-            addBotResponse("I don't have an answer to that question.");
-        }
-        userInput.value = '';
+function toggleChat() {
+    const chatBody = document.getElementById('chat-body');
+    const chatIcon = document.getElementById('chat-icon');
+    
+    chatbotOpen = !chatbotOpen;
+    if (chatbotOpen) {
+        chatBody.style.display = 'block';
+        chatIcon.innerHTML = '-';
+    } else {
+        chatBody.style.display = 'none';
+        chatIcon.innerHTML = '+';
     }
 }
 
-// Function to toggle the chatbox (minimize/maximize)
-function toggleChatbox() {
-    chatbox.classList.toggle('minimized');
+function askQuestion() {
+    const userMessage = document.getElementById('user-message').value;
+    const chatContent = document.getElementById('chat-content');
+    
+    // You can implement the chatbot's response logic here
+    // For simplicity, let's assume the chatbot responds immediately
+    const botResponse = "Chatbot: You asked: " + userMessage;
+    
+    // Display user's question and chatbot's response
+    chatContent.innerHTML += '<p>User: ' + userMessage + '</p>';
+    chatContent.innerHTML += '<p>' + botResponse + '</p>';
+    
+    // Clear user's input
+    document.getElementById('user-message').value = '';
+    
+    // Scroll to the bottom of the chat content
+    chatContent.scrollTop = chatContent.scrollHeight;
 }
 
-// Event listeners
-document.querySelector('button').addEventListener('click', sendMessage);
-document.getElementById('minimize-btn').addEventListener('click', toggleChatbox);
+// You can further enhance this script by adding more chatbot functionality and interactions.
