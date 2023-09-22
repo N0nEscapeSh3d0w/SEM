@@ -1,4 +1,4 @@
-const faqData = {
+const frequentaqData = {
     "What is this chatbot?": "This is a simple FAQ chatbot.",
     "How can I use it?": "You can ask questions, and I will provide answers.",
     "Can you give an example?": "Sure! Ask me a question."
@@ -30,8 +30,8 @@ function sendMessage() {
     const userMessage = userInput.value;
     if (userMessage.trim() !== '') {
         addUserMessage(userMessage);
-        if (faqData[userMessage]) {
-            addBotResponse(faqData[userMessage]);
+        if (frequentaqData[userMessage]) {
+            addBotResponse(frequentaqData[userMessage]);
         } else {
             addBotResponse("I don't have an answer to that question.");
         }
