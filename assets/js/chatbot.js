@@ -1,17 +1,14 @@
-// Define an empty faqData object
-let faqData = {};
+// FAQ data in JSON format
+const faqData = {
+    "What is this chatbot?": "This is a simple FAQ chatbot.",
+    "How can I use it?": "You can ask questions, and I will provide answers.",
+    "Can you give an example?": "Sure! Ask me a question."
+};
 
-// Function to load FAQ data from the JSON file
-function loadFAQData() {
-    fetch('faq.json') // Assuming the JSON file is in the same directory as your HTML
-        .then(response => response.json())
-        .then(data => {
-            faqData = data; // Assign the loaded JSON data to the faqData object
-        })
-        .catch(error => {
-            console.error('Error loading FAQ data:', error);
-        });
-}
+// Chatbox element references
+const chatbox = document.querySelector('.chatbox');
+const messages = document.querySelector('.messages');
+const userInput = document.getElementById('user-input');
 
 // Function to add a user message to the chat
 function addUserMessage(message) {
@@ -45,15 +42,9 @@ function sendMessage() {
 
 // Function to toggle the chatbox (minimize/maximize)
 function toggleChatbox() {
-    const chatbox = document.getElementById('chatbox');
-    const chatIcon = document.getElementById('chat-icon');
     chatbox.classList.toggle('minimized');
-    chatIcon.classList.toggle('minimized');
 }
 
-// Event listener for page load
-window.addEventListener('DOMContentLoaded', () => {
-    loadFAQData(); // Load FAQ data when the page loads
-});
-
-// Rest of your JavaScript code
+// Event listeners
+document.querySelector('button').addEventListener('click', sendMessage);
+document.getElementById('minimize-btn').addEventListener('click', toggleChatbox);
