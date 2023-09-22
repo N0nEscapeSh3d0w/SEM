@@ -24,10 +24,10 @@ function toggleChat() {
     chatbotOpen = !chatbotOpen;
     if (chatbotOpen) {
         chatBody.style.display = 'block';
-        chatIcon.innerHTML = '-';
+        chatIcon.classList.add('open');
     } else {
         chatBody.style.display = 'none';
-        chatIcon.innerHTML = '+';
+        chatIcon.classList.remove('open');
     }
 }
 
