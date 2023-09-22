@@ -13,14 +13,6 @@ function loadFAQData() {
         });
 }
 
-// Call the function to load FAQ data when the page loads
-window.addEventListener('DOMContentLoaded', loadFAQData);
-
-// Chatbox element references
-const chatbox = document.querySelector('.chatbox');
-const messages = document.querySelector('.messages');
-const userInput = document.getElementById('user-input');
-
 // Function to add a user message to the chat
 function addUserMessage(message) {
     const userMessage = document.createElement('div');
@@ -59,6 +51,9 @@ function toggleChatbox() {
     chatIcon.classList.toggle('minimized');
 }
 
-// Event listeners
-document.querySelector('button').addEventListener('click', sendMessage);
-document.getElementById('minimize-btn').addEventListener('click', toggleChatbox);
+// Event listener for page load
+window.addEventListener('DOMContentLoaded', () => {
+    loadFAQData(); // Load FAQ data when the page loads
+});
+
+// Rest of your JavaScript code
