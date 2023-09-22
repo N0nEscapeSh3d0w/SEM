@@ -11,9 +11,22 @@ const faqs = [
         answer: "To enroll in a diploma programme, go to our website's diploma page and select your favourite programme from the list. After that, you can fill out the form by clicking the enroll button."
     },
     {
-        question: "Do you offer refunds?",
-        answer: "Yes, we offer refunds within 30 days of purchase. Please contact our support for assistance."
+        question: "Can I transfer credits from another institution to your diploma program in Computer Science?",
+        answer: "Yes, we do consider credit transfers from other recognized institutions. Contact our academic advisors for more information and to evaluate your transfer credits."
     },
+    {
+        question: "Where can I find the staff directory for the Faculty of Computer Science?",
+        answer: "Our staff directory is available on the staff page."
+    },
+    {
+        question: "What undergraduate degree programs are available at the Faculty of Computer Science?",
+        answer: "We offer a range of undergraduate degree programs in Computer Science, including Bachelor of Science (B.Sc.) in Computer Science and related fields. You can find more information on the particular programme page."
+    },
+    {
+        question: "How can I get in touch with the main reception or information desk of your Faculty of Computer Science?",
+        answer: "The contact number and address of the TARUMT campus can be found at the bottom of the website page."
+    },
+    
     // Add more FAQs and answers here
 ];
 
