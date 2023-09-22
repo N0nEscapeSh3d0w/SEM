@@ -42,7 +42,10 @@ function sendMessage() {
 
 // Function to toggle the chatbox (minimize/maximize)
 function toggleChatbox() {
+    const chatbox = document.getElementById('chatbox');
+    const chatIcon = document.getElementById('chat-icon');
     chatbox.classList.toggle('minimized');
+    chatIcon.classList.toggle('minimized');
 }
 
 // Event listeners
