@@ -651,6 +651,25 @@
         </div> <!-- container -->
     </section>
     
+     <!-- Chatbot icon -->
+    <div class="chat-icon" id="chat-icon" onclick="toggleChatbox()">
+        <span>Chat</span>
+    </div>
+
+    <!-- Chatbox -->
+    <div class="chatbox" id="chatbox">
+        <div class="header">
+            <h2>FAQ Chatbot</h2>
+            <button id="minimize-btn" onclick="toggleChatbox()">-</button>
+        </div>
+        <div class="messages">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Ask a question...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
     <!--====== TEACHERS PART ENDS ======-->
    
 <!--====== FOOTER PART START ======-->
@@ -665,12 +684,6 @@
     
     <!--====== BACK TO TP PART ENDS ======-->
    
-    
-    
-    
-    
-    
-    
     
     
     <!--====== jquery js ======-->
@@ -704,6 +717,9 @@
     
     <!--====== Ajax Contact js ======-->
     <script src="{{url_for('static', filename='js/ajax-contact.js')}}"></script>
+
+    <!--====== Chatbot js ======-->
+   <script src="{{url_for('static', filename='js/chatbot.js')}}"></script>
     
     <!--====== Main js ======-->
    <script src="{{url_for('static', filename='js/main.js')}}"></script>
