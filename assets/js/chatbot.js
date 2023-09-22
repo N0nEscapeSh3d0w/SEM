@@ -66,7 +66,8 @@ function askQuestion() {
 }
 
 // Fetch FAQs from the JSON file
-fetch('./assets/js/faqs.json')
+js/jquery.nice-number.min.js
+fetch('js/faqs.json')
     .then(response => response.json())
     .then(data => {
         faqs = data; // Store FAQs in the 'faqs' array
