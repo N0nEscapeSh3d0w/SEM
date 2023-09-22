@@ -1,5 +1,9 @@
 [
     {
+        "question": "Hello",
+        "answer": "Hello! How can I assist you today?"
+    },
+    {
         "question": "What is your company?",
         "answer": "We are a tech company that specializes in AI and chatbot development."
     },
@@ -11,5 +15,5 @@
         "question": "Do you offer refunds?",
         "answer": "Yes, we offer refunds within 30 days of purchase. Please contact our support for assistance."
     }
-
+    // Add more FAQs and answers here
 ]
