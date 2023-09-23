@@ -3,6 +3,10 @@ let chatbotOpen = false;
 // Define FAQs and their answers
 const faqs = [
     {
+        question: "hi",
+        answer: "Hello! How can I assist you today?"
+    },
+    {
         question: "programme",
         answer: "The Faculty of Computer Science offers a variety of programmes, including diploma and degree programmes. You can explore our programme offerings on our official website."
     },
@@ -25,6 +29,10 @@ const faqs = [
     {
         question: "contact",
         answer: "The contact number and address of the TARUMT campus can be found at the bottom of the website page."
+    },
+    {
+        question: "bye",
+        answer: "Goodbye! If you ever have more questions or need assistance in the future, feel free to come back. Have a great day!"
     },
     
     // Add more FAQs and answers here
