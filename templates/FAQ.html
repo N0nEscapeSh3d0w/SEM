@@ -219,6 +219,33 @@
                                         <div class="singel-form form-group">
                                             <button type="submit" class="main-btn">View</button>
                                         </div> <!-- singel form -->
+                                        <div class="inquiry-container mt-30">
+                                            {% if {{inquiry[0]}} != None %}
+                                                <h1 class="inquiry-heading">Inquiry Information</h1>
+                                                <div class="inquiry-info">
+                                                    <div class="info-column">
+                                                        <strong class="info-label">Inquiry ID:</strong>
+                                                        {{inquiry[0]}}
+                                                    </div>
+                                                    <div class="info-column">
+                                                        <strong class="info-label">User Name:</strong>
+                                                        {{inquiry[1]}}
+                                                    </div>
+                                                    <div class="info-column">
+                                                        <strong class="info-label">User Email:</strong>
+                                                        {{inquiry[2]}}
+                                                    </div>
+                                                    <div class="info-column">
+                                                        <strong class="info-label">Question:</strong>
+                                                        {{inquiry[3]}}
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                <div class="error-message">
+                                                    <p class="error-text">The specified Inquiry ID does not exist.</p>
+                                                </div>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div> <!-- row -->
                             </form>
