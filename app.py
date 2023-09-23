@@ -211,8 +211,6 @@ def submitInquiry():
     cursor.execute(insert_sql, (inquiry_id, userName, userEmail, question, status))
     db_conn.commit()  # Commit the changes to the database
 
-    # Flash a success message
-    flash('Inquiry submitted successfully!', 'success')
     cursor.close()
 
     session["msg"] = inquiry_id
