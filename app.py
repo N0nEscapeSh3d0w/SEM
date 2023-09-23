@@ -184,7 +184,7 @@ def coursesSingel(id):
 
 
 #------Inquiry--------------------
-@app.route('/submitInquiry')
+@app.route('/submitInquiry',  methods=['GET', 'POST'])
 def submitInquiry():
     userName = request.form['userName']
     userEmail = request.form['userEmail']
