@@ -155,6 +155,14 @@
                             <h5>Tell Us the Issues</h5>
                             <h2>Submit an Inquiry</h2>
                         </div> <!-- section title -->
+                        {% if session["msg"]: %}
+
+                            <div class="alert">
+                                <p>Your latest inquiry number is <b>{{session["msg"]}}</b> <br>
+                                    Use the inquiry number to view the status now</p>
+                            </div>
+                
+                        {% endif %}
                         <div class="main-form">
                             <form id="contact-form" action="/submitInquiry" method="post" data-toggle="validator">
                                 <div class="row">
@@ -192,14 +200,7 @@
     </section>
 
      <!-- Display flash messages if they exist -->
-    {% if session["msg"]: %}
 
-            <div class="alert">
-                <strong>Your inquiry is submitted successful</strong>
-                <p>Use inquiry number: {{session["msg"]}} to view the status</p>
-            </div>
-
-        {% endif %}
 
 
     <!--====== CONTACT PART ENDS ======-->
