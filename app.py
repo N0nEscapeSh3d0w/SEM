@@ -208,9 +208,12 @@ def submitInquiry():
     insert_sql = "INSERT INTO Inquiry (inquiry_id, userName, userEmail, question) VALUES (%s, %s, %s, %s)"
     cursor.execute(insert_sql, (inquiry_id, userName, userEmail, question))
     db_conn.commit()  # Commit the changes to the database
+
+    # Flash a success message
+    flash('Inquiry submitted successfully!', 'success')
     cursor.close()
 
-    return render_template('facility.html')
+    return redirect('/FAQ.html')
 
         
 if __name__ == '__main__':
