@@ -183,6 +183,37 @@ def coursesSingel(id):
         return render_template('error.html', error_message=str(e))
 
 
+#------Inquiry--------------------
+@app.route('/submitInquiry')
+def submitInquiry():
+    userName = request.form['userName']
+    userEmail = request.form['userEmail']
+    question = request.files['question']
+
+    #Get last ID 
+    countstatement = "SELECT MAX(InquiryId) FROM Inquiry WHERE userName = %s"
+    count_cursor = db_conn.cursor()
+    count_cursor.execute(countstatement,(userName,))
+    result = count_cursor.fetchone()[0]
+    
+    if result is None:
+        inquiry_id = f"Inquiry/{userName}/1"
+    else:
+        # Extract the number from the existing InquiryId
+        last_number = int(inquiry_id.split("/")[-1])
+        inquiry_id = f"Inquiry/{userName}/{last_number + 1}"
+    
+    count_cursor.close()
+
+    cursor = db_conn.cursor()
+
+    insert_sql = "INSERT INTO Inquiry (InquiryId, userName, userEmail, question) VALUES (%s, %s, %s, %s)"
+    cursor.execute(insert_sql, (inquiry_id, userName, userEmail, question))
+    db_conn.commit()  # Commit the changes to the database
+    cursor.close()
+                    
+    return redirect('/facility)
+
 
         
 if __name__ == '__main__':
