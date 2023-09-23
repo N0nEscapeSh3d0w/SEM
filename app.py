@@ -186,36 +186,41 @@ def coursesSingel(id):
 #------Inquiry--------------------
 @app.route('/submitInquiry',  methods=['GET', 'POST'])
 def submitInquiry():
-    inquiry_id = None
     userName = request.form['userName']
     userEmail = request.form['userEmail']
     question = request.form['question']
 
-    #Get last ID 
-    countstatement = "SELECT MAX(inquiry_id) FROM Inquiry;"
-    count_cursor = db_conn.cursor()
-    count_cursor.execute(countstatement)
-    result = count_cursor.fetchone()[0]
-    
-    if result is None:
-        inquiry_id = f"Inquiry/1"
-    else:
-        # Extract the number from the existing InquiryId
-        try:
-            last_number = int(result.split("/")[-1])
-        except ValueError:
-            last_number = 0
-        inquiry_id = f"Inquiry/{last_number + 1}"
-    
-    count_cursor.close()
-
     cursor = db_conn.cursor()
+
+    # Generate a unique inquiry_id
+    while True:
+        # Get the last inquiry_id for the given userName
+        countstatement = "SELECT MAX(inquiry_id) FROM Inquiry WHERE userName = %s"
+        cursor.execute(countstatement, (userName,))
+        result = cursor.fetchone()[0]
+
+        if result is None:
+            inquiry_id = f"Inquiry/{userName}/1"
+        else:
+            try:
+                last_number = int(result.split("/")[-1])
+            except ValueError:
+                last_number = 0
+            inquiry_id = f"Inquiry/{userName}/{last_number + 1}"
+
+        # Check if the generated inquiry_id already exists
+        check_existing_statement = "SELECT COUNT(*) FROM Inquiry WHERE inquiry_id = %s"
+        cursor.execute(check_existing_statement, (inquiry_id,))
+        count = cursor.fetchone()[0]
+
+        if count == 0:
+            break  # The inquiry_id is unique, exit the loop
 
     insert_sql = "INSERT INTO Inquiry (inquiry_id, userName, userEmail, question) VALUES (%s, %s, %s, %s)"
     cursor.execute(insert_sql, (inquiry_id, userName, userEmail, question))
     db_conn.commit()  # Commit the changes to the database
     cursor.close()
-                    
+    
     return render_template('facility.html')
 
 
