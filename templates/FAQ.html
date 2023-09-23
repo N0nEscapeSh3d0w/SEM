@@ -275,16 +275,18 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var nameElement = document.getElementById("name-display");
-        if (nameElement) {
-            var name = nameElement.textContent;
-            if (name.length > 2) {
-                var hiddenPart = "*".repeat(name.length - 2);
-                nameElement.textContent = name.substr(0, 2) + hiddenPart;
+        var emailElement = document.getElementById("email-display");
+        if (emailElement) {
+            var email = emailElement.textContent;
+            var atIndex = email.indexOf("@");
+            if (atIndex > 2) {
+                var hiddenPart = "*".repeat(atIndex - 2);
+                emailElement.textContent = email.substr(0, 2) + hiddenPart + email.substr(atIndex);
             }
         }
     });
 </script>
+
 
     <!--====== FOOTER PART START ======-->
 
