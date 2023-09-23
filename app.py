@@ -193,7 +193,7 @@ def submitInquiry():
     #Get last ID 
     countstatement = "SELECT MAX(InquiryId) FROM Inquiry WHERE userName = %s"
     count_cursor = db_conn.cursor()
-    count_cursor.execute(countstatement,(userName,))
+    count_cursor.execute(countstatement,(userName))
     result = count_cursor.fetchone()[0]
     
     if result is None:
