@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, session, flash
+from flask import Flask, render_template, request, url_for, session, flash, redirect
 from flask_session import Session
 from pymysql import connections
 import os
