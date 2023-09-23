@@ -201,7 +201,10 @@ def submitInquiry():
         inquiry_id = f"Inquiry/{userName}/1"
     else:
         # Extract the number from the existing InquiryId
-        last_number = int(inquiry_id.split("/")[-1])
+        try:
+            last_number = int(result.split("/")[-1])
+        except ValueError:
+            last_number = 0
         inquiry_id = f"Inquiry/{userName}/{last_number + 1}"
     
     count_cursor.close()
