@@ -212,7 +212,7 @@ def submitInquiry():
     db_conn.commit()  # Commit the changes to the database
     cursor.close()
                     
-    return redirect('/facility)
+    return redirect('/facility')
 
 
         
