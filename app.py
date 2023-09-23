@@ -213,6 +213,8 @@ def submitInquiry():
     flash('Inquiry submitted successfully!', 'success')
     cursor.close()
 
+    session["msg"] = inquiry_id
+
     return render_template('FAQ.html')
         
 if __name__ == '__main__':
