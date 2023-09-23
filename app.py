@@ -193,7 +193,7 @@ def submitInquiry():
     cursor = db_conn.cursor()
 
     # Get the maximum inquiry number from the database
-    cursor.execute("SELECT MAX(SUBSTRING(inquiry_id, 8)::integer) FROM Inquiry")
+    cursor.execute("SELECT MAX(CAST(SUBSTRING(inquiry_id, 8) AS SIGNED)) FROM Inquiry")
     max_inquiry_number = cursor.fetchone()[0]
 
     if max_inquiry_number is None:
@@ -211,8 +211,6 @@ def submitInquiry():
     cursor.close()
 
     return render_template('facility.html')
-
-
 
         
 if __name__ == '__main__':
