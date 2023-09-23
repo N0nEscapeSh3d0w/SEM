@@ -192,20 +192,20 @@ def submitInquiry():
     question = request.form['question']
 
     #Get last ID 
-    countstatement = "SELECT MAX(inquiry_id) FROM Inquiry WHERE userName = %s"
+    countstatement = "SELECT MAX(inquiry_id) FROM Inquiry;"
     count_cursor = db_conn.cursor()
-    count_cursor.execute(countstatement,(userName,))
+    count_cursor.execute(countstatement)
     result = count_cursor.fetchone()[0]
     
     if result is None:
-        inquiry_id = f"Inquiry/{userName}/1"
+        inquiry_id = f"Inquiry/1"
     else:
         # Extract the number from the existing InquiryId
         try:
             last_number = int(result.split("/")[-1])
         except ValueError:
             last_number = 0
-        inquiry_id = f"Inquiry/{userName}/{last_number + 1}"
+        inquiry_id = f"Inquiry/{last_number + 1}"
     
     count_cursor.close()
 
