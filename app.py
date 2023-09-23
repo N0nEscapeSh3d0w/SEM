@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, session, flash, redirect
+from flask import Flask, render_template, request, url_for, session, flash
 from flask_session import Session
 from pymysql import connections
 import os
@@ -213,7 +213,7 @@ def submitInquiry():
     flash('Inquiry submitted successfully!', 'success')
     cursor.close()
 
-    return redirect('/FAQ.html')
+     return render_template('FAQ.html')
 
         
 if __name__ == '__main__':
