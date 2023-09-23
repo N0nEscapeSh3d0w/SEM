@@ -191,6 +191,15 @@
         </div> <!-- container -->
     </section>
 
+     <!-- Display flash messages if they exist -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert alert-{{ messages[0][0] }}">
+                <strong>{{ messages[0][1] }}</strong>
+            </div>
+        {% endif %}
+    {% endwith %}
+
     <!--====== CONTACT PART ENDS ======-->
 
     <!--====== FOOTER PART START ======-->
