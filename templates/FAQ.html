@@ -228,11 +228,11 @@
                                                     </div>
                                                     <div class="info-column">
                                                         <strong class="info-label">Name:</strong>
-                                                        {{ inquiry[1] }}
+                                                       <span id="name-display">{{ inquiry[1] }}</span>
                                                     </div>
                                                     <div class="info-column">
                                                         <strong class="info-label">Email:</strong>
-                                                        {{ inquiry[2] }}
+                                                        <span id="email-display">{{ inquiry[2] }}</span>
                                                     </div>
                                                     <div class="info-column">
                                                         <strong class="info-label">Question:</strong>
@@ -258,11 +258,33 @@
     </section>
 
 
-     <!-- Display flash messages if they exist -->
-
-
 
     <!--====== CONTACT PART ENDS ======-->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var nameElement = document.getElementById("name-display");
+        if (nameElement) {
+            var name = nameElement.textContent;
+            if (name.length > 2) {
+                var hiddenPart = "*".repeat(name.length - 2);
+                nameElement.textContent = name.substr(0, 2) + hiddenPart;
+            }
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var nameElement = document.getElementById("name-display");
+        if (nameElement) {
+            var name = nameElement.textContent;
+            if (name.length > 2) {
+                var hiddenPart = "*".repeat(name.length - 2);
+                nameElement.textContent = name.substr(0, 2) + hiddenPart;
+            }
+        }
+    });
+</script>
 
     <!--====== FOOTER PART START ======-->
 
