@@ -217,14 +217,14 @@ def submitInquiry():
 
     return render_template('FAQ.html')
 
-@app.route('/viewInquiry', methods=['POST'])
+@app.route('/viewInquiry', methods=['GET'])
 def viewInquiry():
     inquiry_id = request.form['inquiry_id']
 
     cursor = db_conn.cursor()
 
     statement = "SELECT * FROM Inquiry WHERE inquiry_id = %s"
-    cursor.execute(statement, (inquiry_id,))
+    cursor.execute(statement, (inquiry_id))
     result = cursor.fetchone()
 
     return render_template('FAQ.html', inquiry=result)
