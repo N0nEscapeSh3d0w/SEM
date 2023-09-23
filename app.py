@@ -188,7 +188,7 @@ def coursesSingel(id):
 def submitInquiry():
     userName = request.form['userName']
     userEmail = request.form['userEmail']
-    question = request.files['question']
+    question = request.form['question']
 
     #Get last ID 
     countstatement = "SELECT MAX(InquiryId) FROM Inquiry WHERE userName = %s"
