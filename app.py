@@ -56,7 +56,7 @@ def facility():
 @app.route("/FAQ", methods=['GET', 'POST'])
 def faq():
     session.pop('msg', default=None)
-    return render_template('FAQ.html')
+    return render_template('FAQ.html', inquiry=None)
 
 
 @app.route('/courses/<int:id>')
@@ -217,7 +217,7 @@ def submitInquiry():
 
     return render_template('FAQ.html')
 
-@app.route('/viewInquiry', methods=['GET'])
+@app.route('/viewInquiry', methods=['GET','POST'])
 def viewInquiry():
     inquiry_id = request.form['inquiry_id']
 
