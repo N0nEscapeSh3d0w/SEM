@@ -219,18 +219,16 @@ def submitInquiry():
 
 @app.route('/viewInquiry', methods=['POST'])
 def viewInquiry():
-    
     inquiry_id = request.form['inquiry_id']
 
     cursor = db_conn.cursor()
 
     statement = "SELECT * FROM Inquiry WHERE inquiry_id = %s"
-    cursor = db_conn.cursor()
     cursor.execute(statement, (inquiry_id,))
     result = cursor.fetchone()
 
+    return render_template('FAQ.html', inquiry=result)
 
-    return render_template('FAQ.html', inquiry= result)
         
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
