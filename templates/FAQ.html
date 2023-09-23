@@ -192,13 +192,15 @@
     </section>
 
      <!-- Display flash messages if they exist -->
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="alert alert-{{ messages[0][0] }}">
-                <strong>{{ messages[0][1] }}</strong>
+    {% if session["msg"]: %}
+
+            <div class="alert">
+                <strong>Your inquiry is submitted successful</strong>
+                <p>Use inquiry number: {{session["msg"]}} to view the status</p>
             </div>
+            {{% session["msg"].clear() %}}
         {% endif %}
-    {% endwith %}
+
 
     <!--====== CONTACT PART ENDS ======-->
 
