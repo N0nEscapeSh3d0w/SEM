@@ -1,13 +1,14 @@
 /* Styles for the main container */
 .inquiry-container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 20px auto 0; /* Add margin-top to create space at the top */
     padding: 20px;
     background-color: #f5f5f5;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 
 /* Styles for the heading */
 .inquiry-heading {
