@@ -218,7 +218,7 @@ def submitInquiry():
     return render_template('FAQ.html')
 
 @app.route('/viewInquiry', methods=['POST'])
-def submitInquiry():
+def viewInquiry():
     
     inquiry_id = request.form['inquiry_id']
 
