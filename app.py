@@ -215,7 +215,7 @@ def submitInquiry():
 
     session["msg"] = inquiry_id
 
-    return render_template('FAQ.html')
+    return render_template('FAQ.html', inquiry=None)
 
 @app.route('/viewInquiry', methods=['GET','POST'])
 def viewInquiry():
