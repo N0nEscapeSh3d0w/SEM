@@ -190,6 +190,7 @@ def submitInquiry():
     userName = request.form['userName']
     userEmail = request.form['userEmail']
     question = request.form['question']
+    status = "pending"
 
     cursor = db_conn.cursor()
 
@@ -206,8 +207,8 @@ def submitInquiry():
     # Create the new inquiry_id
     inquiry_id = f'Inquiry{new_inquiry_number}'
 
-    insert_sql = "INSERT INTO Inquiry (inquiry_id, userName, userEmail, question) VALUES (%s, %s, %s, %s)"
-    cursor.execute(insert_sql, (inquiry_id, userName, userEmail, question))
+    insert_sql = "INSERT INTO Inquiry (inquiry_id, userName, userEmail, question, status) VALUES (%s, %s, %s, %s, %s)"
+    cursor.execute(insert_sql, (inquiry_id, userName, userEmail, question, status))
     db_conn.commit()  # Commit the changes to the database
 
     # Flash a success message
