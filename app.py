@@ -184,7 +184,7 @@ def coursesSingel(id):
 
 
 #------Inquiry--------------------
-@app.route('/submitInquiry',  methods=['GET', 'POST'])
+@app.route('/submitInquiry', methods=['POST'])
 def submitInquiry():
     userName = request.form['userName']
     userEmail = request.form['userEmail']
@@ -192,36 +192,26 @@ def submitInquiry():
 
     cursor = db_conn.cursor()
 
-    # Generate a unique inquiry_id
-    while True:
-        # Get the last inquiry_id for the given userName
-        countstatement = "SELECT MAX(inquiry_id) FROM Inquiry WHERE userName = %s"
-        cursor.execute(countstatement, (userName,))
-        result = cursor.fetchone()[0]
+    # Get the maximum inquiry number from the database
+    cursor.execute("SELECT MAX(SUBSTRING(inquiry_id, 8)::integer) FROM Inquiry")
+    max_inquiry_number = cursor.fetchone()[0]
 
-        if result is None:
-            inquiry_id = f"Inquiry/{userName}/1"
-        else:
-            try:
-                last_number = int(result.split("/")[-1])
-            except ValueError:
-                last_number = 0
-            inquiry_id = f"Inquiry/{userName}/{last_number + 1}"
+    if max_inquiry_number is None:
+        max_inquiry_number = 0
 
-        # Check if the generated inquiry_id already exists
-        check_existing_statement = "SELECT COUNT(*) FROM Inquiry WHERE inquiry_id = %s"
-        cursor.execute(check_existing_statement, (inquiry_id,))
-        count = cursor.fetchone()[0]
+    # Increment the inquiry number
+    new_inquiry_number = max_inquiry_number + 1
 
-        if count == 0:
-            break  # The inquiry_id is unique, exit the loop
+    # Create the new inquiry_id
+    inquiry_id = f'Inquiry{new_inquiry_number}'
 
     insert_sql = "INSERT INTO Inquiry (inquiry_id, userName, userEmail, question) VALUES (%s, %s, %s, %s)"
     cursor.execute(insert_sql, (inquiry_id, userName, userEmail, question))
     db_conn.commit()  # Commit the changes to the database
     cursor.close()
-    
+
     return render_template('facility.html')
+
 
 
         
