@@ -156,23 +156,23 @@
                             <h2>Submit an Inquiry</h2>
                         </div> <!-- section title -->
                         <div class="main-form">
-                            <form id="contact-form" action="#" method="post" data-toggle="validator">
+                            <form id="contact-form" action="/submitInquiry" method="post" data-toggle="validator">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="singel-form form-group">
-                                            <input name="name" type="text" placeholder="Your name" data-error="Name is required." required="required">
+                                            <input name="userName" type="text" placeholder="Your name" data-error="Name is required." required="required">
                                             <div class="help-block with-errors"></div>
                                         </div> <!-- singel form -->
                                     </div>
                                     <div class="col-md-6">
                                         <div class="singel-form form-group">
-                                            <input name="email" type="email" placeholder="Email" data-error="Valid email is required." required="required">
+                                            <input name="userEmail" type="email" placeholder="Email" data-error="Valid email is required." required="required">
                                             <div class="help-block with-errors"></div>
                                         </div> <!-- singel form -->
                                     </div>
                                     <div class="col-md-12">
                                         <div class="singel-form form-group">
-                                            <textarea name="Question" placeholder="Question" data-error="Please,leave us a question." required="required"></textarea>
+                                            <textarea name="question" placeholder="Question" data-error="Please,leave us a question." required="required"></textarea>
                                             <div class="help-block with-errors"></div>
                                         </div> <!-- singel form -->
                                     </div>
