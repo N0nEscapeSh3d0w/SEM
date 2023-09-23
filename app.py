@@ -55,6 +55,7 @@ def facility():
 
 @app.route("/FAQ", methods=['GET', 'POST'])
 def faq():
+    session["msg"].clear()
     return render_template('FAQ.html')
 
 
