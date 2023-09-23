@@ -211,14 +211,16 @@
                         <div class="main-form">
                             <form id="contact-form" action="/viewInquiry" method="post" data-toggle="validator">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="singel-form form-group">
+                                    <div class="col-md-6 col-lg-12">
+                                        <div class="singel-form form-group col-lg-10">
                                             <input name="inquiry_id" type="text" placeholder="Inquiry ID" required="required">
                                             <div class="help-block with-errors"></div> 
                                         </div> <!-- singel form -->
-                                        <div class="singel-form form-group">
+                                        <div class="singel-form form-group col-lg-2">
                                             <button type="submit" class="main-btn">View</button>
                                         </div> <!-- singel form -->
+
+                                    </div>
                                         <div class="inquiry-container mt-30">
                                             {% if inquiry[0]: %}
                                                 <h1 class="inquiry-heading">Inquiry Information</h1>
@@ -250,7 +252,7 @@
                                                 </div>
                                             {% endif %}
                                         </div>
-                                    </div>
+
                                 </div> <!-- row -->
                             </form>
                         </div> <!-- main form -->
