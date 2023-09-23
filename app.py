@@ -191,9 +191,9 @@ def submitInquiry():
     question = request.form['question']
 
     #Get last ID 
-    countstatement = "SELECT MAX(InquiryId) FROM Inquiry WHERE userName = %s"
+    countstatement = "SELECT MAX(inquiry_id) FROM Inquiry WHERE userName = %s"
     count_cursor = db_conn.cursor()
-    count_cursor.execute(countstatement,(userName))
+    count_cursor.execute(countstatement,(userName,))
     result = count_cursor.fetchone()[0]
     
     if result is None:
@@ -207,7 +207,7 @@ def submitInquiry():
 
     cursor = db_conn.cursor()
 
-    insert_sql = "INSERT INTO Inquiry (InquiryId, userName, userEmail, question) VALUES (%s, %s, %s, %s)"
+    insert_sql = "INSERT INTO Inquiry (inquiry_id, userName, userEmail, question) VALUES (%s, %s, %s, %s)"
     cursor.execute(insert_sql, (inquiry_id, userName, userEmail, question))
     db_conn.commit()  # Commit the changes to the database
     cursor.close()
